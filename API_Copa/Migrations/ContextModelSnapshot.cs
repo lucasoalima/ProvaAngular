@@ -25,17 +25,23 @@ namespace API_Copa.Migrations
                     b.Property<DateTime>("CriadoEm")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("SelecaoAId")
+                    b.Property<int>("SelecaoAid")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("SelecaoBId")
+                    b.Property<string>("SelecaoAplacar")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("SelecaoBid")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("SelecaoBplacar")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SelecaoAId");
+                    b.HasIndex("SelecaoAid");
 
-                    b.HasIndex("SelecaoBId");
+                    b.HasIndex("SelecaoBid");
 
                     b.ToTable("Jogos");
                 });
@@ -61,11 +67,15 @@ namespace API_Copa.Migrations
                 {
                     b.HasOne("API_Copa.Models.Selecao", "SelecaoA")
                         .WithMany()
-                        .HasForeignKey("SelecaoAId");
+                        .HasForeignKey("SelecaoAid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("API_Copa.Models.Selecao", "SelecaoB")
                         .WithMany()
-                        .HasForeignKey("SelecaoBId");
+                        .HasForeignKey("SelecaoBid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("SelecaoA");
 

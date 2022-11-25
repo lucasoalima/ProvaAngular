@@ -6,13 +6,22 @@ namespace API_Copa.Models
     {
         public Jogo()
         {
-            SelecaoA = new Selecao();
-            SelecaoB = new Selecao();
             CriadoEm = DateTime.Now;
         }
         public int Id { get; set; }
+
+        public int SelecaoAid {get; set;}
+
         public Selecao SelecaoA { get; set; }
+
+        public int SelecaoBid {get; set;}
+
         public Selecao SelecaoB { get; set; }
+
+        public string SelecaoAplacar {get; set;}
+
+        public string SelecaoBplacar {get; set;}
+        
         public DateTime CriadoEm { get; set; }
     }
 }
